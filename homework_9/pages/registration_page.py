@@ -3,6 +3,8 @@ import os
 from selene import browser, be, have
 from selenium.webdriver.common.by import By
 
+from homework_9.data.users import User
+
 
 class RegistrationPage:
 
@@ -53,7 +55,21 @@ class RegistrationPage:
     def submit(self):
         browser.element('#submit').press_enter()
 
-    def should_registered_user_with(self, fill_full_name, fill_email, choose_gender, fill_phone, select_date_of_birth,
+    def register_user(self, user: User):
+        self.fill_full_name(user.first_name, user.last_name)
+        self.fill_email(user.email)
+        self.choose_gender(user.gender)
+        self.fill_phone(user.phone)
+        self.select_date_of_birth(user.day, user.month, user.year)
+        self.fill_subject(user.subject)
+        self.choose_hobby(user.hobbies)
+        self.upload_picture(user.picture)
+        self.fill_adress(user.address)
+        self.select_state_and_city(user.state, user.city)
+        self.submit()
+        return self
+
+    def should_registered_user_with(self, user: User, fill_full_name, fill_email, choose_gender, fill_phone,
                                     fill_subject, fill_adress, choose_hobby, upload_picture, select_state_and_city):
         browser.element('.table').all('td').even.should(
             have.exact_texts(
@@ -61,7 +77,7 @@ class RegistrationPage:
                 fill_email,
                 choose_gender,
                 fill_phone,
-                select_date_of_birth,
+                f"{user.day} {user.month},{user.year}",
                 fill_subject,
                 upload_picture,
                 fill_adress,
