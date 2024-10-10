@@ -72,20 +72,19 @@ class RegistrationPage:
         self.submit()
         return self
 
-    def should_registered_user_with(self, user: User, fill_full_name, fill_email, choose_gender, fill_phone,
-                                    fill_subject, fill_adress, choose_hobby, upload_picture, select_state_and_city):
+    def should_registered_user_with(self, user: User):
         browser.element('.table').all('td').even.should(
             have.exact_texts(
-                fill_full_name,
-                fill_email,
-                choose_gender,
-                fill_phone,
+                f'{user.first_name} {user.last_name}',
+                user.email,
+                user.gender,
+                user.phone,
                 f"{user.day} {user.month},{user.year}",
-                fill_subject,
-                upload_picture,
-                fill_adress,
-                choose_hobby,
-                select_state_and_city
+                user.subject,
+                user.hobbies,
+                user.picture_name,
+                user.address,
+                f"{user.state} {user.city}"
             )
         )
         return self

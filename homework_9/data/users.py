@@ -13,6 +13,7 @@ class User:
     year: str
     subject: str
     picture: str
+    picture_name: str
     address: str
     hobbies: str
     state: str
@@ -30,6 +31,7 @@ user = User(
     year='1990',
     subject='Computer Science',
     picture='resources/sun.jpeg',
+    picture_name='sun.jpeg',
     address='Moscow Street, 56, Moscow, Russia',
     hobbies='Sports',
     state='Haryana',
