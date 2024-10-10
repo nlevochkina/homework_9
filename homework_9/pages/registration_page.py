@@ -22,16 +22,19 @@ class RegistrationPage:
         browser.element('#userEmail').should(be.blank).type(value)
 
     def choose_gender(self, value):
-        browser.element(value).click()
+        browser.element(f"//label[text()='{value}']").click()
 
     def fill_phone(self, value):
         browser.element('#userNumber').should(be.blank).type(value)
 
     def select_date_of_birth(self, day, month, year):
-        browser.element('#dateOfBirthInput').click()
-        browser.driver.find_element(By.XPATH, month).click()
-        browser.driver.find_element(By.XPATH, year).click()
-        browser.driver.find_element(By.CLASS_NAME, day).click()
+        browser.element("#dateOfBirthInput").click()
+        browser.element(".react-datepicker__month-select").click()
+        browser.element(f'//*[text()="{month}"]').click()
+
+        browser.element(".react-datepicker__year-select").click()
+        browser.element(f"//*[text()={year}]").click()
+        browser.element(f"//div[text()={day}]").click()
 
     def fill_subject(self, value):
         browser.element('#subjectsInput').type(value).press_enter()
@@ -40,7 +43,7 @@ class RegistrationPage:
         browser.element('#currentAddress').should(be.blank).type(value)
 
     def choose_hobby(self, value):
-        browser.element(value).click()
+        browser.element(f"//label[text()='{value}']").click()
 
     def upload_picture(self, path):
         image_path = os.path.abspath(path)
@@ -62,9 +65,9 @@ class RegistrationPage:
         self.fill_phone(user.phone)
         self.select_date_of_birth(user.day, user.month, user.year)
         self.fill_subject(user.subject)
-        self.choose_hobby(user.hobbies)
         self.upload_picture(user.picture)
         self.fill_adress(user.address)
+        self.choose_hobby(user.hobbies)
         self.select_state_and_city(user.state, user.city)
         self.submit()
         return self

@@ -24,15 +24,5 @@ def test_fill_out_the_form():
     # registration_page.submit()
 
     # THEN
-    registration_page.should_registered_user_with(
-        'Natalia La',
-        'natalia@mail.ru',
-        'Female',
-        '1234567890',
-        '12 January,1990',
-        'Computer Science',
-        'sun.jpeg',
-        'Moscow Street, 56, Moscow, Russia',
-        'Sports',
-        'Haryana Karnal'
-    )
+    registration_page.should_registered_user_with(users.user)
+
