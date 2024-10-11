@@ -1,7 +1,6 @@
 import os
 
 from selene import browser, be, have
-from selenium.webdriver.common.by import By
 
 from homework_9.data.users import User
 
@@ -28,13 +27,13 @@ class RegistrationPage:
         browser.element('#userNumber').should(be.blank).type(value)
 
     def select_date_of_birth(self, day, month, year):
-        browser.element("#dateOfBirthInput").click()
-        browser.element(".react-datepicker__month-select").click()
+        browser.element('#dateOfBirthInput').click()
+        browser.element('.react-datepicker__month-select').click()
         browser.element(f'//*[text()="{month}"]').click()
 
-        browser.element(".react-datepicker__year-select").click()
-        browser.element(f"//*[text()={year}]").click()
-        browser.element(f"//div[text()={day}]").click()
+        browser.element('.react-datepicker__year-select').click()
+        browser.element(f'//*[text()={year}]').click()
+        browser.element(f'//div[text()={day}]').click()
 
     def fill_subject(self, value):
         browser.element('#subjectsInput').type(value).press_enter()

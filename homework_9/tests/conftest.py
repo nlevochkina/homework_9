@@ -2,7 +2,7 @@ import pytest
 from selene.support.shared import browser
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture(scope='function', autouse=True)
 def open_browser():
     browser.config.base_url = 'https://demoqa.com'
 
@@ -11,8 +11,8 @@ def open_browser():
     browser.quit()
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture(scope='function', autouse=True)
 def set_browser_size():
-    browser.config.driver_name = "chrome"
-    browser.config.window_height = 800
-    browser.config.window_width = 800
+    browser.config.driver_name = 'chrome'
+    browser.config.window_height = 1920
+    browser.config.window_width = 1080
