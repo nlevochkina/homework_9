@@ -1,7 +1,6 @@
 import os
 
 from selene import browser, be, have
-from selenium.webdriver.common.by import By
 
 from homework_9.data.users import User
 
