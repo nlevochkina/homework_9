@@ -14,7 +14,7 @@ def test_fill_out_the_form():
     registration_page.fill_subject('Computer Science')
     registration_page.choose_hobby('Sports')
     registration_page.fill_adress('Moscow Street, 56, Moscow, Russia')
-    registration_page.upload_picture('../tests/resources/sun.jpeg')
+    registration_page.upload_picture('tests/resources/sun.jpeg')
     registration_page.select_state_and_city('Haryana', 'Karnal')
     registration_page.submit()
 

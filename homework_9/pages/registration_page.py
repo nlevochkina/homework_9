@@ -44,7 +44,8 @@ class RegistrationPage:
         browser.element(f"//label[text()='{value}']").click()
 
     def upload_picture(self, path):
-        image_path = os.path.abspath(path)
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        image_path = os.path.join(project_root, path)
         browser.element('#uploadPicture').send_keys(image_path)
 
     def select_state_and_city(self, state, city):
